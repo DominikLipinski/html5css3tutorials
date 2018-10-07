@@ -1,0 +1,115 @@
+/*---------------------------------*/
+/* BASIC SETUP */
+/*---------------------------------*/
+.wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+/*---------------------------------*/
+/* BALL CONTAINER */
+/*---------------------------------*/
+.ball-container {
+  -ms-flex-preferred-size: calc(100px *2);
+      flex-basis: calc(100px *2);
+  -webkit-box-flex: 0;
+      -ms-flex-positive: 0;
+          flex-grow: 0;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  height: calc(100px *4);
+  position: relative;
+  border: 2px solid transparent;
+  border-radius: 5px;
+  background: #fff;
+  background-clip: padding-box;
+}
+
+.ball-container .ball {
+  margin: 0 auto;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: radial-gradient(#79b6e5, #212d6e);
+}
+
+.ball-container::after {
+  position: absolute;
+  top: -2px;
+  bottom: -2px;
+  left: -2px;
+  right: -2px;
+  background: -webkit-gradient(linear, right top, left bottom, from(#212d6e), to(#81e2b1));
+  background: linear-gradient(to left bottom, #212d6e, #81e2b1);
+  content: '';
+  z-index: -1;
+  border-radius: 5px;
+}
+
+/* BOUNCING ANIMATION */
+@-webkit-keyframes bounce {
+  0% {
+    margin-top: 0;
+  }
+  45% {
+    margin-top: 300px;
+    height: 100px;
+  }
+  50% {
+    margin-top: 350px;
+    height: calc(100px /2);
+  }
+  55% {
+    margin-top: 300px;
+    height: 100px;
+  }
+  100% {
+    margin-top: 0;
+  }
+}
+@keyframes bounce {
+  0% {
+    margin-top: 0;
+  }
+  45% {
+    margin-top: 300px;
+    height: 100px;
+  }
+  50% {
+    margin-top: 350px;
+    height: calc(100px /2);
+  }
+  55% {
+    margin-top: 300px;
+    height: 100px;
+  }
+  100% {
+    margin-top: 0;
+  }
+}
+
+.bouncing {
+  -webkit-animation: bounce 3s infinite;
+          animation: bounce 3s infinite;
+}
+
+/*---------------------------------*/
+/* TEXT CONTAINER */
+/*---------------------------------*/
+.text-container {
+  padding-left: 15px;
+}
+
+.text-container button {
+  background-color: #1d5599;
+  color: #fff;
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #1d5599;
+  cursor: pointer;
+}
+/*# sourceMappingURL=style.css.map */

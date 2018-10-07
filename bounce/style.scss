@@ -1,0 +1,102 @@
+/*---------------------------------*/
+/* BASIC SETUP */
+/*---------------------------------*/
+
+$colors: (
+    blue-border: rgb(33, 45, 110),
+    green-border: rgb(129, 226, 177),
+    button: rgb(29, 85, 153)
+);
+
+@function color($color-name) {
+    @return map-get($colors, $color-name)
+}
+
+$ball-diameter: 100px;
+
+.wrapper { display: flex; align-items : center;}
+
+
+/*---------------------------------*/
+/* BALL CONTAINER */
+/*---------------------------------*/
+
+.ball-container {
+    flex-basis: calc(#{$ball-diameter} *2);
+    flex-grow: 0;
+    flex-shrink: 0;
+    height: calc(#{$ball-diameter} *4);
+
+    position: relative;
+    border: 2px solid transparent;
+    border-radius: 5px;
+    background: #fff;
+    background-clip: padding-box;
+
+    .ball {
+        margin: 0 auto;
+        width: $ball-diameter;
+        height: $ball-diameter;
+        border-radius: 50%;
+        background: radial-gradient(#79b6e5, color(blue-border));
+    }
+}
+
+
+.ball-container::after {
+    position: absolute;
+    top: -2px; bottom: -2px;
+    left: -2px; right: -2px;
+    background: linear-gradient(to left bottom, color(blue-border), color(green-border));
+    content: '';
+    z-index: -1;
+    border-radius: 5px;
+}
+
+/* BOUNCING ANIMATION */
+
+@keyframes bounce {
+    0% {
+      margin-top: 0;
+      }
+    45% {
+        margin-top: 300px;
+        height: $ball-diameter;
+    }  
+    50% {
+        margin-top: 350px;
+        height: calc(#{$ball-diameter} /2);
+    }
+    55% {
+        margin-top: 300px;
+        height: $ball-diameter;
+    }
+    100% {
+        margin-top: 0;
+    }
+}
+
+.bouncing {
+    animation: bounce 3s infinite;
+}
+
+
+/*---------------------------------*/
+/* TEXT CONTAINER */
+/*---------------------------------*/
+
+
+.text-container {
+    padding-left: 15px;   
+
+    button {
+        background-color: color(button);
+        color: #fff;
+        padding: 10px;
+        border-radius: 4px;
+        border: 1px solid color(button);
+        cursor: pointer;
+    }
+}
+
+
